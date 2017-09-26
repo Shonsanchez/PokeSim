@@ -1,0 +1,33 @@
+package Pokemon;
+
+import Moves.Move;
+import Moves.Tackle;
+
+import java.util.ArrayList;
+
+/**
+ * Created by Shon on 9/25/2017.
+ */
+public class Charmander extends Pokemon {
+    /**
+     * Constructor
+     *
+     * @param name    - the name of the pokemon
+     * @param health  - the health of the pokemon
+     * @param moveSet - an ArrayList of moves available to this pokemon
+     */
+    public Charmander(String name, int health, ArrayList<Move> moveSet) {
+        super(name, health, moveSet);
+        setPosMoves();
+    }
+
+    /**
+     * Sets the possible moves for this particular pokemon
+     */
+    private void setPosMoves(){
+        ArrayList<Move> posMoves = new ArrayList<>();
+        posMoves.add(new Tackle());
+        super.setPosMove(posMoves);
+    }
+
+}
