@@ -9,21 +9,37 @@ import java.util.ArrayList;
  */
 public abstract class Pokemon {
     protected String name;
-    private int health;
+    private int maxHealth;
+    private int currentHealth;
     private ArrayList<Move> moveSet; // The current move set for this pokemon
     private ArrayList<Move> posMoves;// an ArrayList of possible move set
 
 
     /**
-     * Constructor
+     * Constructor for Pokemon
      * @param name - the name of the pokemon
-     * @param health - the health of the pokemon
+     * @param maxHealth - the maxHealth of the pokemon
      * @param moveSet - an ArrayList of moves available to this pokemon
      */
-    protected Pokemon(String name, int health, ArrayList<Move> moveSet){
+    protected Pokemon(String name, int maxHealth, ArrayList<Move> moveSet){
         this.name = name;
-        this.health = health;
+        this.maxHealth = maxHealth;
         this.moveSet = moveSet;
+        this.currentHealth = maxHealth;
+    }
+
+    /**
+     * Constructor for caught pokemon.
+     * @param name - the name of the pokemon
+     * @param maxHealth - the maxHealth of the pokemon
+     * @param moveSet - an ArrayList of moves available to this pokemon
+     * @param currentHealth - the current health of the pokemon.
+     */
+    protected Pokemon(String name, int maxHealth, ArrayList<Move> moveSet, int currentHealth){
+        this.name = name;
+        this.maxHealth = maxHealth;
+        this.moveSet = moveSet;
+        this.currentHealth = currentHealth;
     }
 
     /**
@@ -36,13 +52,13 @@ public abstract class Pokemon {
     }
 
     /**
-     * Deduces health from the pokemon equal to the health arguement
-     * @param health - the amount of health to be deduced from the current health.
-     * @return - the remaining health of this pokemon
+     * Deduces current from the pokemon equal to the maxHealth arguement
+     * @param dmg - the amount of health to be deduced from the current maxHealth.
+     * @return - the remaining maxHealth of this pokemon
      */
-    public int takeDmg(int health){
-        this.health -= health;
-        return health;
+    public int takeDmg(int dmg){
+        this.currentHealth -= dmg;
+        return maxHealth;
     }
 
     /**
@@ -53,9 +69,13 @@ public abstract class Pokemon {
         this.posMoves = posMoves;
     }
 
-    //Returns the health of the pokemon
-    public int getHealth(){
-        return this.health;
+    //Returns the maxHealth of the pokemon
+    public int getmaxHealth(){
+        return this.maxHealth;
+    }
+
+    public int getCurrentHealth(){
+        return this.currentHealth;
     }
 
     public String getName(){

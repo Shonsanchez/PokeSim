@@ -16,7 +16,7 @@ public class Main {
         ArrayList<Pokemon> pokeList =PokemonGenerator.genPokemon();
         for (Pokemon pokemon: pokeList){
             System.out.println("Pokemon's Name: " + pokemon.getName());
-            System.out.println("Pokemon's Health: " + pokemon.getHealth());
+            System.out.println("Pokemon's maxHealth: " + pokemon.getmaxHealth());
         }
     }
 }

@@ -13,11 +13,11 @@ public class Charmander extends Pokemon {
      * Constructor
      *
      * @param name    - the name of the pokemon
-     * @param health  - the health of the pokemon
+     * @param maxHealth  - the maxHealth of the pokemon
      * @param moveSet - an ArrayList of moves available to this pokemon
      */
-    public Charmander(String name, int health, ArrayList<Move> moveSet) {
-        super(name, health, moveSet);
+    public Charmander(String name, int maxHealth, ArrayList<Move> moveSet) {
+        super(name, maxHealth, moveSet);
         setPosMoves();
     }
 
