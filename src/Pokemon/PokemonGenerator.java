@@ -1,5 +1,6 @@
 package Pokemon;
 
+import Moves.Ember;
 import Moves.Move;
 import Moves.Tackle;
 import Pokemon.Pokemon;
@@ -19,6 +20,7 @@ public class PokemonGenerator {
     public static ArrayList<Pokemon> genPokemon(){
         ArrayList<Move> moveSet = new ArrayList<>();
         moveSet.add(new Tackle());
+        moveSet.add(new Ember());
         pokeList.add(new Charmander("Max", 30, moveSet));
         pokeList.add(new Charmander("Sam", 28, moveSet));
         return pokeList;

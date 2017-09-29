@@ -61,6 +61,8 @@ public abstract class Pokemon {
         return maxHealth;
     }
 
+
+
     /**
      * Sets the possible moves for this particular pokemon
      * @param posMoves - An ArrayList of possible moves
@@ -69,8 +71,16 @@ public abstract class Pokemon {
         this.posMoves = posMoves;
     }
 
+    /**
+     * Returns the possible moves for this pokemon.
+     * @return - posMove
+     */
+    public ArrayList<Move> getPosMove() {
+        return this.posMoves;
+    }
+
     //Returns the maxHealth of the pokemon
-    public int getmaxHealth(){
+    public int getMaxHealth(){
         return this.maxHealth;
     }
 

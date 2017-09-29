@@ -1,5 +1,6 @@
 package Pokemon;
 
+import Moves.Ember;
 import Moves.Move;
 import Moves.Tackle;
 
@@ -27,6 +28,7 @@ public class Charmander extends Pokemon {
     private void setPosMoves(){
         ArrayList<Move> posMoves = new ArrayList<>();
         posMoves.add(new Tackle());
+        posMoves.add(new Ember());
         super.setPosMove(posMoves);
     }
 
