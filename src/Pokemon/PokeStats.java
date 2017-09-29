@@ -5,15 +5,60 @@ package Pokemon;
  * This class stores the stats for a pokemon.
  */
 public class PokeStats {
-    private int healthPoint,attack, defense, spAttack,spDefense,speed;
-    
-    public PokeStats(int healthPoint, int attack, int defense, int spAttack, int spDefense, int speed){
-        this.healthPoint = healthPoint;
+    private int healthPoint,attack, defense, spAttack,spDefense,speed,level; //Max stat values
+    private int curHp, curA, curD, curSpA, curSpD, curS; //Current Stat values
+
+    public PokeStats(int level,int healthPoint, int attack, int defense, int spAttack, int spDefense, int speed){
+        this.level = level;
+        this.healthPoint= healthPoint;
+        curHp = healthPoint;
         this.attack = attack;
+        curA = attack;
         this.defense = defense;
+        curD = defense;
         this.spAttack = spAttack;
+        curSpA = spAttack;
         this.spDefense = spDefense;
+        curSpD = spDefense;
         this.speed = speed;
+        curS = speed;
+    }
+
+    /**
+     * Resets the current stats to the max stats except for health
+     * This method is primary used at the end of battles
+     */
+    public void resetStats(){
+        curA = attack;
+        curD = defense;
+        curSpA = spAttack;
+        curSpD = spDefense;
+        curS = speed;
+    }
+
+    /**
+     * Add health to the curHP
+     * @param health - the amount of health to be restored.
+     */
+    public void restoreHealth(int health){
+        curHp += health;
+        if (curHp > healthPoint)
+            curHp = healthPoint;
+    }
+
+    /**
+     * set the current hp to the healthPoint
+     */
+    public void resetHealth(){
+        curHp = healthPoint;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public int getHealthPoint() {

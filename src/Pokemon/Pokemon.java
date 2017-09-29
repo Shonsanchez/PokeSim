@@ -11,6 +11,7 @@ public abstract class Pokemon {
     protected String name;
     private int maxHealth;
     private int currentHealth;
+    private PokeStats pokeStats;
     private ArrayList<Move> moveSet; // The current move set for this pokemon
     private ArrayList<Move> posMoves;// an ArrayList of possible move set
 
@@ -21,11 +22,17 @@ public abstract class Pokemon {
      * @param maxHealth - the maxHealth of the pokemon
      * @param moveSet - an ArrayList of moves available to this pokemon
      */
-    protected Pokemon(String name, int maxHealth, ArrayList<Move> moveSet){
+    public Pokemon(String name, int maxHealth, ArrayList<Move> moveSet){
         this.name = name;
         this.maxHealth = maxHealth;
         this.moveSet = moveSet;
         this.currentHealth = maxHealth;
+    }
+
+    public Pokemon(String name, PokeStats pokeStats, ArrayList<Move> moveSet) {
+        this.name = name;
+        this.pokeStats = pokeStats;
+        this.moveSet = moveSet;
     }
 
     /**
