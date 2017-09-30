@@ -33,4 +33,31 @@ public class Trainer {
             pokeHeld.add(pokemon);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Pokemon> getPokeHeld() {
+        return pokeHeld;
+    }
+
+    public void setPokeHeld(ArrayList<Pokemon> pokeHeld) {
+        this.pokeHeld = pokeHeld;
+    }
+
+    public void setPokeOwned(ArrayList<Pokemon> pokeOwned) {
+        this.pokeOwned = pokeOwned;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
 }

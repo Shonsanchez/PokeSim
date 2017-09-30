@@ -7,9 +7,9 @@ import Moves.Tackle;
 import java.util.ArrayList;
 
 /**
- * Created by Shon on 9/25/2017.
+ * Created by Shon on 9/29/2017.
  */
-public class Charmander extends Pokemon {
+public class Squirtle extends Pokemon {
     /**
      * Constructor
      *
@@ -17,12 +17,12 @@ public class Charmander extends Pokemon {
      * @param maxHealth  - the maxHealth of the pokemon
      * @param moveSet - an ArrayList of moves available to this pokemon
      */
-    public Charmander(String name, int maxHealth, ArrayList<Move> moveSet) {
+    public Squirtle(String name, int maxHealth, ArrayList<Move> moveSet) {
         super(name, maxHealth, moveSet);
         setPosMoves();
     }
 
-    public Charmander(String name, PokeStats pokeStats, ArrayList moveSet){
+    public Squirtle(String name, PokeStats pokeStats, ArrayList moveSet){
         super(name,pokeStats,moveSet);
     }
 

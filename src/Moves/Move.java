@@ -6,7 +6,7 @@ package Moves;
 public abstract class Move {
     private String moveName;
     private int baseDmg;
-    //private int type;
+    private int type;
 
     protected Move(String moveName, int baseDmg){
         this.moveName = moveName;

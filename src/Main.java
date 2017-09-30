@@ -1,6 +1,12 @@
-import Moves.Ember;
+import Moves.Move;
+import Moves.Tackle;
 import Pokemon.Pokemon;
-import Pokemon.PokemonGenerator;
+import Pokemon.Bulbasaur;
+import Pokemon.Squirtle;
+import Pokemon.Charmander;
+import Trainer.Gender;
+import Trainer.Trainer;
+import Pokemon.PokeStats;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,20 +16,66 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, User, and Welcome to PokeSim! The Pokemon.Pokemon Simulator you'll learn to enjoy!");
-       // System.out.println("Please select a pokemon: ");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Hello, User, and Welcome to PokeSim! The Pokemon Simulator you'll learn to enjoy!");
+        System.out.println("What is your name?");
+        String name = scanner.next();
+        Trainer trainer = new Trainer(name,Gender.MALE);
+        System.out.println("Hey, " + trainer.getName() + " it is a pleasure to meet you.");
+        PokeStats b = new PokeStats(5,45,49,49,65,65,45);
+        PokeStats c = new PokeStats(5,39,52,43,60,50,65);
+        PokeStats s = new PokeStats(5,44,48,65,50,64,43);
+        ArrayList<Move> moveSet = new ArrayList<>();
+        moveSet.add(new Tackle());
+        Pokemon bulb = new Bulbasaur("Bulbasaur" , b , moveSet);
+        Pokemon charmandar = new Charmander("Charmander", c, moveSet);
+        Pokemon squirt = new Squirtle("Squirtle", s, moveSet);
+        ArrayList<Pokemon> pokeList = new ArrayList();
+        pokeList.add(bulb);
+        pokeList.add(charmandar);
+        pokeList.add(squirt);
+        int counter = 1;
+        System.out.println("Pick a pokemon: ");
+        for (Pokemon pokemon : pokeList) {
+            System.out.println(counter++ + ") " + pokemon.getName());
+        }
+        Pokemon chosenPokemon;
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                chosenPokemon = bulb;
+                break;
+            case 2:
+                chosenPokemon = charmandar;
+                break;
+            case 3:
+                chosenPokemon = squirt;
+                break;
+            default:
+                chosenPokemon = bulb;
+                break;
+        }
+        Pokemon garyPoke = new Charmander("Char" , c, moveSet);
+        System.out.println("You have selected " + chosenPokemon.getName());
+        System.out.println(chosenPokemon.getName() + " has the following stats\n" + chosenPokemon.getStats() + "\n");
+        System.out.println("You will be challenged by Gary, also a new Trainer.");
+        System.out.println("Let the battles begin. Gary has a " + garyPoke.getName() +
+        " and it stats are \n" + charmandar.getStats());
 
-        ArrayList<Pokemon> pokeList = PokemonGenerator.genPokemon();
-        for (Pokemon pokemon: pokeList){
-            System.out.println("Pokemon's Name: " + pokemon.getName());
-            System.out.println("Pokemon's maxHealth: " + pokemon.getMaxHealth());
+        System.out.println("Gary's pokemon's health = " + garyPoke.getCurrentHealth());
+        while(garyPoke.getCurrentHealth() > 0){
+            System.out.println("Select an attack");
+            counter = 1;
+            for (Move move: chosenPokemon.getMoveSet()){
+                System.out.println(counter + ") " + move.getMoveName());
+            }
+            choice = scanner.nextInt();
+            garyPoke.takeDmg(chosenPokemon.attack(chosenPokemon.getMoveSet().get(choice - 1)));
+            System.out.println("Stat's of Gary's Pokemon\n" + garyPoke.getStats());
         }
 
-        Pokemon max = pokeList.get(0);
-        Pokemon sam = pokeList.get(1);
-        System.out.println("Sam's current health is " + sam.getCurrentHealth());
-        sam.takeDmg(max.attack(max.getMoveSet().get(0)));
-        System.out.println("Max used tackle on Sam. Same lost " + max.getMoveSet().get(0).getBaseDmg() + " dmg.");
-        System.out.println("Sam's current health is " + sam.getCurrentHealth());
+        System.out.println("You've won!");
+
+
     }
 }

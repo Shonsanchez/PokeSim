@@ -1,7 +1,6 @@
 package Pokemon;
 
 import Moves.Move;
-
 import java.util.ArrayList;
 
 /**
@@ -9,8 +8,6 @@ import java.util.ArrayList;
  */
 public abstract class Pokemon {
     protected String name;
-    private int maxHealth;
-    private int currentHealth;
     private PokeStats pokeStats;
     private ArrayList<Move> moveSet; // The current move set for this pokemon
     private ArrayList<Move> posMoves;// an ArrayList of possible move set
@@ -24,9 +21,7 @@ public abstract class Pokemon {
      */
     public Pokemon(String name, int maxHealth, ArrayList<Move> moveSet){
         this.name = name;
-        this.maxHealth = maxHealth;
         this.moveSet = moveSet;
-        this.currentHealth = maxHealth;
     }
 
     public Pokemon(String name, PokeStats pokeStats, ArrayList<Move> moveSet) {
@@ -44,9 +39,7 @@ public abstract class Pokemon {
      */
     protected Pokemon(String name, int maxHealth, ArrayList<Move> moveSet, int currentHealth){
         this.name = name;
-        this.maxHealth = maxHealth;
         this.moveSet = moveSet;
-        this.currentHealth = currentHealth;
     }
 
     /**
@@ -64,11 +57,9 @@ public abstract class Pokemon {
      * @return - the remaining maxHealth of this pokemon
      */
     public int takeDmg(int dmg){
-        this.currentHealth -= dmg;
-        return maxHealth;
+        pokeStats.takedmg(dmg);
+        return pokeStats.getCurHp();
     }
-
-
 
     /**
      * Sets the possible moves for this particular pokemon
@@ -88,11 +79,11 @@ public abstract class Pokemon {
 
     //Returns the maxHealth of the pokemon
     public int getMaxHealth(){
-        return this.maxHealth;
+        return this.pokeStats.getHealthPoint();
     }
 
     public int getCurrentHealth(){
-        return this.currentHealth;
+        return this.pokeStats.getCurHp();
     }
 
     public String getName(){
@@ -101,5 +92,9 @@ public abstract class Pokemon {
 
     public ArrayList<Move> getMoveSet(){
         return this.moveSet;
+    }
+
+    public String getStats(){
+        return pokeStats.getStats();
     }
 }

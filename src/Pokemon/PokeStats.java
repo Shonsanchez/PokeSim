@@ -47,6 +47,25 @@ public class PokeStats {
     }
 
     /**
+     * reduced the pokemon's health
+     * @param dmg - the amount of health to deduce from the current health
+     */
+    public void takedmg(int dmg){
+        curHp -= dmg;
+    }
+
+    public String getStats(){
+        String stats = "";
+        stats += "HP: " + healthPoint + " CurHP: " + curHp +
+                "\nAttack: " + attack +
+                "\nDefense: " + defense +
+                "\nSp Attack: " + spAttack +
+                "\nSp Defense: " + spDefense +
+                "\nSpeed: " + speed;
+        return stats;
+    }
+
+    /**
      * set the current hp to the healthPoint
      */
     public void resetHealth(){
@@ -55,6 +74,54 @@ public class PokeStats {
 
     public int getLevel() {
         return level;
+    }
+
+    public int getCurHp() {
+        return curHp;
+    }
+
+    public void setCurHp(int curHp) {
+        this.curHp = curHp;
+    }
+
+    public int getCurA() {
+        return curA;
+    }
+
+    public void setCurA(int curA) {
+        this.curA = curA;
+    }
+
+    public int getCurD() {
+        return curD;
+    }
+
+    public void setCurD(int curD) {
+        this.curD = curD;
+    }
+
+    public int getCurSpA() {
+        return curSpA;
+    }
+
+    public void setCurSpA(int curSpA) {
+        this.curSpA = curSpA;
+    }
+
+    public int getCurSpD() {
+        return curSpD;
+    }
+
+    public void setCurSpD(int curSpD) {
+        this.curSpD = curSpD;
+    }
+
+    public int getCurS() {
+        return curS;
+    }
+
+    public void setCurS(int curS) {
+        this.curS = curS;
     }
 
     public void setLevel(int level) {
