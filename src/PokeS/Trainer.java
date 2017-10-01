@@ -44,6 +44,35 @@ public class Trainer {
             pokeHeld.add(pokemon);
     }
 
+
+    /**
+     * The method creates a new list and loops through pokeHeld and adds pokemon that have more
+     * than 0 healthPoints.
+     * @return - An ArrayList of non fainted pokemon.
+     */
+    public ArrayList<Pokemon> getNonFaintedPoke(){
+        ArrayList<Pokemon> nonFaintedPoke = new ArrayList<>();
+        for (Pokemon poke : pokeHeld) {
+            if (poke.getCurrentHealth() > 0) {
+                nonFaintedPoke.add(poke);
+            }
+        }
+        return nonFaintedPoke;
+    }
+
+    /**
+     * Goes through the list of pokemon held to check if the trainer has any pokemon
+     * with more than 0 health.
+     * @return - if the trainer is holding a pokemon with more than 1 healthPoint.
+     */
+    public boolean hasNonFaintedPoke(){
+        for (Pokemon poke: pokeHeld){
+            if (poke.getCurrentHealth() > 0)
+                return true;
+        }
+        return false;
+    }
+
     public String getName() {
         return name;
     }
