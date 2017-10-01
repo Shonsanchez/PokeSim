@@ -63,6 +63,14 @@ public abstract class Pokemon {
     }
 
     /**
+     * Calculates the current health of the pokemon. if less <= 0 returns true
+     * @return true if currentHealth <=0
+     */
+    public boolean isFainted(){
+        return getCurrentHealth() <= 0;
+    }
+
+    /**
      * Sets the possible moves for this particular pokemon
      * @param posMoves - An ArrayList of possible moves
      */
@@ -97,5 +105,13 @@ public abstract class Pokemon {
 
     public String getStats(){
         return pokeStats.getStats();
+    }
+
+    /**
+     * Creates a string with the current and max health of this pokemon.
+     * @return - a string with the current/maxHealth of this pokemon.
+     */
+    public String getHealth(){
+        return "Current Health/Max Health: " + getCurrentHealth() + "/" + getMaxHealth();
     }
 }

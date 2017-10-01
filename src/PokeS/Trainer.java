@@ -73,6 +73,18 @@ public class Trainer {
         return false;
     }
 
+    /**
+     * Checks if there are non fainted pokemons, if there are returns the first on in the list,
+     * Else returns null;
+     * @return - first non fainted pokemon, else null.
+     */
+    public Pokemon getFirstNonFaintedPoke(){
+        if(hasNonFaintedPoke()){
+            return getNonFaintedPoke().get(0);
+        }
+        return null;
+    }
+
     public String getName() {
         return name;
     }
