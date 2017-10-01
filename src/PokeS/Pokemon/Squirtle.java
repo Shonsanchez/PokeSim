@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Shon on 9/29/2017.
  */
-public class Squirtle extends Pokemon {
+public class Squirtle extends Pokemon implements StartPokemon {
     /**
      * Constructor
      *

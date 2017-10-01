@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class Trainer {
     private String name;
-    private ArrayList<Pokemon> pokeHeld;
-    private ArrayList<Pokemon> pokeOwned;
+    private ArrayList<Pokemon> pokeHeld = new ArrayList<>();
+    private ArrayList<Pokemon> pokeOwned = new ArrayList<>();
     private Gender gender;
 
     public Trainer(String name, Gender gender) {

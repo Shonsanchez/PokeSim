@@ -3,8 +3,6 @@ package PokeS;
 import PokeS.Moves.Move;
 import PokeS.Pokemon.Pokemon;
 
-import java.util.ArrayList;
-
 /**
  * Created by Shon on 9/30/2017.
  * Class used to have pokemon battle each other.

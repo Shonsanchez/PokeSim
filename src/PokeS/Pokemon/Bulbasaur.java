@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Shon on 9/29/2017.
  */
-public class Bulbasaur extends Pokemon{
+public class Bulbasaur extends Pokemon implements StartPokemon {
     /**
      * Constructor
      *
@@ -21,6 +21,8 @@ public class Bulbasaur extends Pokemon{
         super(name, maxHealth, moveSet);
         setPosMoves();
     }
+
+
 
     public Bulbasaur(String name, PokeStats pokeStats, ArrayList moveSet){
         super(name,pokeStats,moveSet);

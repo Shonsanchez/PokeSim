@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Shon on 9/25/2017.
  */
-public class Charmander extends Pokemon {
+public class Charmander extends Pokemon implements StartPokemon {
     /**
      * Constructor
      *
