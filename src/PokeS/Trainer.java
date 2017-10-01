@@ -11,6 +11,7 @@ public class Trainer {
     private String name;
     private ArrayList<Pokemon> pokeHeld = new ArrayList<>();
     private ArrayList<Pokemon> pokeOwned = new ArrayList<>();
+    private Pokemon starterPokemon;
     private Gender gender;
 
     public Trainer(String name, Gender gender) {
@@ -23,6 +24,7 @@ public class Trainer {
         this.gender = gender;
         pokeHeld.add(firstPoke);
         pokeHeld.add(firstPoke);
+        starterPokemon = firstPoke;
     }
 
     /**
@@ -111,5 +113,9 @@ public class Trainer {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public Pokemon getStarterPokemon(){
+        return starterPokemon;
     }
 }

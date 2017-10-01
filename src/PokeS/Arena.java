@@ -31,21 +31,30 @@ public class Arena {
      * Forms a string with the beginning options to a battle.
      * @return - a string with options.
      */
-    public String selectOptions(){
-        return "1) Attack   2)Switch\n3)Run";
+    public String getOptions(){
+        return "1)Attack   2)Switch\n3)Bag      4)Run";
     }
 
     /**
      * Creates a string with the list of moves for the selected pokemon.
      * @return - a string with a list of moves for the selected pokemon.
      */
-    public String selectMoves(){
+    public String getMoves(){
         String result = "";
         int cnt = 1;
         for(Move move: currPoke.getMoveSet()){
             result += cnt++ + ") " + move.getMoveName() + "\n";
         }
         return result;
+    }
+
+    public String selectOption(int option){
+        switch (option){
+            case 1:
+                return getMoves();
+            default:
+                return getMoves();
+        }
     }
 
     /**
