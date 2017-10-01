@@ -1,8 +1,8 @@
-package Pokemon;
+package PokeS.Pokemon;
 
-import Moves.Ember;
-import Moves.Move;
-import Moves.Tackle;
+import PokeS.Moves.Ember;
+import PokeS.Moves.Move;
+import PokeS.Moves.Tackle;
 
 import java.util.ArrayList;
 

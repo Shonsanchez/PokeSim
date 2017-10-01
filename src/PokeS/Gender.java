@@ -1,4 +1,4 @@
-package Trainer;
+package PokeS;
 
 /**
  * Created by Shon on 9/26/2017.

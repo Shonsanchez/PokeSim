@@ -1,4 +1,4 @@
-package Moves;
+package PokeS.Moves;
 
 /**
  * Created by Shon on 9/29/2017.

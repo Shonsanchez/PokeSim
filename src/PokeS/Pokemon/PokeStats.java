@@ -1,4 +1,4 @@
-package Pokemon;
+package PokeS.Pokemon;
 
 /**
  * Created by Shon on 9/29/2017.

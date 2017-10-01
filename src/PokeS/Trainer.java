@@ -1,7 +1,6 @@
-package Trainer;
+package PokeS;
 
-import Pokemon.Pokemon;
-import com.sun.org.apache.bcel.internal.generic.GETFIELD;
+import PokeS.Pokemon.Pokemon;
 
 import java.util.ArrayList;
 
@@ -19,6 +18,17 @@ public class Trainer {
         this.gender = gender;
     }
 
+    public Trainer(String name, Gender gender, Pokemon firstPoke){
+        this.name = name;
+        this.gender = gender;
+        pokeHeld.add(firstPoke);
+        pokeHeld.add(firstPoke);
+    }
+
+    /**
+     * Used to return a list of pokemon caught.
+     * @return - pokeOwned.
+     */
     public ArrayList<Pokemon> getPokeOwned(){
         return this.pokeOwned;
     }
@@ -28,7 +38,8 @@ public class Trainer {
      * @param pokemon - the pokemon to add
      */
     public void addPokemon(Pokemon pokemon){
-        pokeOwned.add(pokemon);
+        if (!pokeOwned.contains(pokemon))
+            pokeOwned.add(pokemon);
         if (pokeHeld.size() < 6)
             pokeHeld.add(pokemon);
     }

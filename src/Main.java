@@ -1,12 +1,12 @@
-import Moves.Move;
-import Moves.Tackle;
-import Pokemon.Pokemon;
-import Pokemon.Bulbasaur;
-import Pokemon.Squirtle;
-import Pokemon.Charmander;
-import Trainer.Gender;
-import Trainer.Trainer;
-import Pokemon.PokeStats;
+import PokeS.Moves.Move;
+import PokeS.Moves.Tackle;
+import PokeS.Pokemon.Pokemon;
+import PokeS.Pokemon.Bulbasaur;
+import PokeS.Pokemon.Squirtle;
+import PokeS.Pokemon.Charmander;
+import PokeS.Gender;
+import PokeS.Trainer;
+import PokeS.Pokemon.PokeStats;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Hello, User, and Welcome to PokeSim! The Pokemon Simulator you'll learn to enjoy!");
+        System.out.println("Hello, User, and Welcome to PokeSim! The PokeS.Trainer.Pokemon Simulator you'll learn to enjoy!");
         System.out.println("What is your name?");
         String name = scanner.next();
         Trainer trainer = new Trainer(name,Gender.MALE);
@@ -58,7 +58,7 @@ public class Main {
         Pokemon garyPoke = new Charmander("Char" , c, moveSet);
         System.out.println("You have selected " + chosenPokemon.getName());
         System.out.println(chosenPokemon.getName() + " has the following stats\n" + chosenPokemon.getStats() + "\n");
-        System.out.println("You will be challenged by Gary, also a new Trainer.");
+        System.out.println("You will be challenged by Gary, also a new PokeS.Trainer.");
         System.out.println("Let the battles begin. Gary has a " + garyPoke.getName() +
         " and it stats are \n" + charmandar.getStats());
 
@@ -71,11 +71,9 @@ public class Main {
             }
             choice = scanner.nextInt();
             garyPoke.takeDmg(chosenPokemon.attack(chosenPokemon.getMoveSet().get(choice - 1)));
-            System.out.println("Stat's of Gary's Pokemon\n" + garyPoke.getStats());
+            System.out.println("Stat's of Gary's PokeS.Trainer.Pokemon\n" + garyPoke.getStats());
         }
 
         System.out.println("You've won!");
-
-
     }
 }

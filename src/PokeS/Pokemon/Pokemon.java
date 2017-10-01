@@ -1,6 +1,7 @@
-package Pokemon;
+package PokeS.Pokemon;
 
-import Moves.Move;
+import PokeS.Moves.Move;
+
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ public abstract class Pokemon {
 
 
     /**
-     * Constructor for Pokemon
+     * Constructor for PokeS.Trainer.Pokemon
      * @param name - the name of the pokemon
      * @param maxHealth - the maxHealth of the pokemon
      * @param moveSet - an ArrayList of moves available to this pokemon
