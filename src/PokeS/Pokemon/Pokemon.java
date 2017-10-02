@@ -79,6 +79,18 @@ public abstract class Pokemon {
     }
 
     /**
+     * Returns the ith move in the moveSet if there is no ith element returns null.
+     * @param i - the position of the move in the moveSet
+     * @return - a move on the ith position in moveSet or null
+     */
+    public Move getMove(int i) {
+        if (moveSet.size() >= i+1){
+            return moveSet.get(i);
+        }
+        return null;
+    }
+
+    /**
      * Returns the possible moves for this pokemon.
      * @return - posMove
      */

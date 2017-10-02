@@ -95,13 +95,7 @@ public class PokeWorld {
      */
     private void battle(Trainer opponent){
         Arena arena = new Arena(this.mainChar, opponent);
-        while (!arena.someoneLost()){
-            System.out.println(arena.getOptions());
-            choice = scanner.nextInt();
-            System.out.println("You have selected option " + choice );
-            System.out.println(arena.selectOption(choice));
-
-        }
+        arena.startBattle();
     }
 
     /**
