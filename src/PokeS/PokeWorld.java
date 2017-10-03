@@ -13,7 +13,6 @@ import java.util.Scanner;
  */
 public class PokeWorld {
     Scanner scanner = new Scanner(System.in);
-    int choice;
     private static PokeWorld instance;
     Trainer mainChar;
     ArrayList<Trainer> trainers = new ArrayList<>();
@@ -65,7 +64,7 @@ public class PokeWorld {
      * @return - a new trainer.
      */
     private Trainer createGary(){
-        Pokemon garyPoke = new Charmander("Lil Char", StartPokemon.getStarterStats(), StartPokemon.getStarterMoves());
+        Pokemon garyPoke = new Charmander("Lil Char", StartPokemon.getStarterStats(), StartPokemon.getStarterMoves2());
         return new Trainer("Gary", Gender.MALE, garyPoke);
     }
 

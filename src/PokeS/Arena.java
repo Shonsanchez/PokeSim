@@ -77,6 +77,7 @@ public class Arena {
         }else {
             System.out.println("Bag is empty.");
         }
+        System.out.println("");
         return true;
     }
 
@@ -118,6 +119,7 @@ public class Arena {
     private void useMove(Move move, Pokemon attacker, Pokemon defender){
         int dmg = move.calculateDmg(attacker, defender);
         defender.takeDmg(dmg);
+        System.out.println(attacker.getName() + " used " + move.getMoveName());
         System.out.println(attacker.getName() + " did " + dmg + " damage to " + defender.getName() + ".");
         if (defender.isFainted()){
             System.out.println(defender.getName() + " Fainted.\n");
@@ -133,6 +135,9 @@ public class Arena {
      */
     private void oppAttackFirst(Move move) {
         oppMove();
+        if(currPoke.getCurrentHealth() < 0){
+            return;
+        }
         useMove(move,currPoke,oppPoke);
     }
 
@@ -142,6 +147,9 @@ public class Arena {
      */
     private void curAttackFirst(Move move) {
         useMove(move,currPoke,oppPoke);
+        if (oppPoke.getCurrentHealth() < 0){
+            return;
+        }
         oppMove();
     }
 

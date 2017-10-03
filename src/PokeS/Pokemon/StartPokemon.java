@@ -1,6 +1,8 @@
 package PokeS.Pokemon;
 
 import PokeS.Moves.Move;
+import PokeS.Moves.ShittierMove;
+import PokeS.Moves.ShittyMove;
 import PokeS.Moves.Tackle;
 
 import java.util.ArrayList;
@@ -32,6 +34,14 @@ public interface StartPokemon {
     static ArrayList<Move> getStarterMoves() {
         ArrayList<Move> moveSet = new ArrayList<>();
         moveSet.add(new Tackle());
+        return moveSet;
+    }
+
+    static ArrayList<Move> getStarterMoves2(){
+        ArrayList<Move> moveSet = new ArrayList<>();
+        moveSet.add(new Tackle());
+        moveSet.add(new ShittyMove());
+        moveSet.add(new ShittierMove());
         return moveSet;
     }
 
