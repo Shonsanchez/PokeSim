@@ -1,5 +1,6 @@
 package PokeS;
 
+import PokeS.Items.Potion;
 import PokeS.Pokemon.*;
 
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class PokeWorld {
                 break;
         }
         createMainChar(name, gen, starter);
+        mainChar.addItem(new Potion());
         System.out.println("Your name is " + mainChar.getName() + " and you are a " + mainChar.getGender()
                 + "\nYou have picked " + starter.getName() + " as your starter pokemon.");
         Trainer gary = createGary();
@@ -97,10 +99,10 @@ public class PokeWorld {
         Arena arena = new Arena(this.mainChar, opponent);
         arena.startBattle();
     }
-
     /**
      * Starts the world.
      */
     public void start() {
+
     }
 }

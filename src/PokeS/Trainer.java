@@ -1,5 +1,6 @@
 package PokeS;
 
+import PokeS.Items.Item;
 import PokeS.Pokemon.Pokemon;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Trainer {
     private String name;
     private ArrayList<Pokemon> pokeHeld = new ArrayList<>();
     private ArrayList<Pokemon> pokeOwned = new ArrayList<>();
+    private ArrayList<Item> itemsHeld = new ArrayList<>();
     private Pokemon starterPokemon;
     private Gender gender;
 
@@ -23,8 +25,26 @@ public class Trainer {
         this.name = name;
         this.gender = gender;
         pokeHeld.add(firstPoke);
-        pokeHeld.add(firstPoke);
+        pokeOwned.add(firstPoke);
         starterPokemon = firstPoke;
+    }
+
+
+    public ArrayList<Item> getItemsHeld() {
+        return itemsHeld;
+    }
+
+    /**
+     * Checks if the item is in the itemsHeld ArrayList, adds the of the item to the item within the
+     * ArrayList if the does exist, else adds the item into the array.
+     * @param item - the item to add.
+     */
+    public void addItem(Item item){
+        if (itemsHeld.contains(item)) {
+            itemsHeld.get(itemsHeld.indexOf(item)).addUses(item.getUses());
+        } else {
+            itemsHeld.add(item);
+        }
     }
 
     /**

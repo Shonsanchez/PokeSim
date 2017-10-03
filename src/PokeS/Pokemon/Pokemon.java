@@ -81,7 +81,7 @@ public abstract class Pokemon {
     /**
      * Returns the ith move in the moveSet if there is no ith element returns null.
      * @param i - the position of the move in the moveSet
-     * @return - a move on the ith position in moveSet or null
+     * @return - a move on the ith position in moveSet or nullf
      */
     public Move getMove(int i) {
         if (moveSet.size() >= i+1){
@@ -117,6 +117,18 @@ public abstract class Pokemon {
 
     public String getStats(){
         return pokeStats.getStats();
+    }
+
+    public int getAttack() {
+        return pokeStats.getAttack();
+    }
+
+    public int getDefense() {
+        return pokeStats.getDefense();
+    }
+
+    public int getLvl() {
+        return pokeStats.getLevel();
     }
 
     /**

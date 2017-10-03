@@ -1,5 +1,6 @@
 package PokeS;
 
+import PokeS.Items.Item;
 import PokeS.Moves.Move;
 import PokeS.Pokemon.Pokemon;
 
@@ -16,7 +17,6 @@ public class Arena {
     private Trainer opponent;
     private Pokemon currPoke;
     private Pokemon oppPoke;
-    private boolean ff = false;
     Scanner scanner = new Scanner(System.in);
     int choice;
 
@@ -55,15 +55,42 @@ public class Arena {
     }
 
     private boolean displaySwitch() {
+        if (proponent.getNonFaintedPoke().size() > 1){
+            System.out.println(proponent.getNonFaintedPoke().size());
+            for (Pokemon poke: proponent.getNonFaintedPoke()){
+                System.out.println(poke.getName());
+            }
+        }else
+            System.out.println("You don't have any other pokemon that can fight.\n");
+
         return true;
     }
 
     private boolean displayBag() {
+        if (!proponent.getItemsHeld().isEmpty()){
+            for (Item item: proponent.getItemsHeld()){
+                int counter = 1;
+                System.out.println(counter + ")" + item.getItemName());
+                choice = scanner.nextInt(); //need error checking.
+            }
+        }else {
+            System.out.println("Bag is empty.");
+        }
         return true;
     }
 
     private boolean displayRun() {
-        return true;
+        System.out.println("Are you sure? \n1)No, 2)Yes");
+        choice = scanner.nextInt();
+        switch (choice){
+            case 1:
+                return true;
+            case 2:
+                System.out.println("You have surrendered.");
+                return false;
+            default:
+                return true;
+        }
     }
 
     public boolean selectOption(int option){
@@ -87,17 +114,20 @@ public class Arena {
      * @return - a String of the amount of dmg dealt.
      */
     public boolean useMove(Move move){
-        int dmg = move.getBaseDmg();
+
+        int dmg = move.calculateDmg(currPoke,oppPoke);
         oppPoke.takeDmg(dmg);
         String result = currPoke.getName() + " did " + dmg + " damage.\n";
         if (oppPoke.isFainted()){
             result += oppPoke.getName() + " Fainted.";
         }else {
-            result+= oppPoke.getHealth();
+            result+= oppPoke.getName()  + " " + oppPoke.getHealth();
         }
         System.out.println(result);
         return !someoneLost();
     }
+
+
 
     /**
      * Creates a string with the list of moves for the selected pokemon.

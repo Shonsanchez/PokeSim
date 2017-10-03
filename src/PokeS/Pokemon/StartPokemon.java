@@ -28,6 +28,7 @@ public interface StartPokemon {
     static PokeStats getDmgStaterStats() {
         return new PokeStats(5,39,66,40,50,50,55);
     }
+
     static ArrayList<Move> getStarterMoves() {
         ArrayList<Move> moveSet = new ArrayList<>();
         moveSet.add(new Tackle());
