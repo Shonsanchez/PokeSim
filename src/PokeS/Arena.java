@@ -1,5 +1,6 @@
 package PokeS;
 
+import java.util.concurrent.ThreadLocalRandom;
 import PokeS.Items.Item;
 import PokeS.Moves.Move;
 import PokeS.Pokemon.Pokemon;
@@ -15,7 +16,7 @@ import java.util.Scanner;
 public class Arena {
     private Trainer proponent;
     private Trainer opponent;
-    private Pokemon currPoke;
+    private Pokemon currPoke; //Current Pokemon - the Proponent's Pokemon
     private Pokemon oppPoke;
     Scanner scanner = new Scanner(System.in);
     int choice;
@@ -50,7 +51,7 @@ public class Arena {
         System.out.printf(getMoves());
         choice = scanner.nextInt();
         if ((move = currPoke.getMove(choice-1))!=null)
-            return useMove(move);
+            return doBattle(move);
         return true;
     }
 
@@ -93,7 +94,7 @@ public class Arena {
         }
     }
 
-    public boolean selectOption(int option){
+    private boolean selectOption(int option){
         switch (option){
             case 1:
                 return displayMoves();
@@ -108,32 +109,74 @@ public class Arena {
         }
     }
 
-    /**
-     * Deducts health from the opponent's pokemon based on base dmg of move and
-     * forms a string of the amount of dmg done.
-     * @return - a String of the amount of dmg dealt.
-     */
-    public boolean useMove(Move move){
 
-        int dmg = move.calculateDmg(currPoke,oppPoke);
-        oppPoke.takeDmg(dmg);
-        String result = currPoke.getName() + " did " + dmg + " damage.\n";
-        if (oppPoke.isFainted()){
-            result += oppPoke.getName() + " Fainted.";
+    //Update DocString
+    /**
+     * Deducts health from the opponent's pokemon based on base dmg of move
+     * forms a string of the amount of dmg done.
+     */
+    private void useMove(Move move, Pokemon attacker, Pokemon defender){
+        int dmg = move.calculateDmg(attacker, defender);
+        defender.takeDmg(dmg);
+        System.out.println(attacker.getName() + " did " + dmg + " damage to " + defender.getName() + ".");
+        if (defender.isFainted()){
+            System.out.println(defender.getName() + " Fainted.\n");
         }else {
-            result+= oppPoke.getName()  + " " + oppPoke.getHealth();
+            System.out.println(defender.getName()  + " " + defender.getHealth() + ".\n");
         }
-        System.out.println(result);
-        return !someoneLost();
+
     }
 
+    /**
+     * Makes the opponent attack first
+     * @param move - the move of the current Pokemon.
+     */
+    private void oppAttackFirst(Move move) {
+        oppMove();
+        useMove(move,currPoke,oppPoke);
+    }
 
+    /**
+     * Makes the current pokemon attack first.
+     * @param move - the move of the current Pokemon.
+     */
+    private void curAttackFirst(Move move) {
+        useMove(move,currPoke,oppPoke);
+        oppMove();
+    }
+
+    private boolean doBattle(Move move) {
+        float speedRatio = currPoke.speedRatio(oppPoke);
+        if (speedRatio > 1){ // the currPoke is faster than oppPoke
+            curAttackFirst(move);
+        }else if(speedRatio < 1){// oppPoke is faster than currPoke
+            oppAttackFirst(move);
+        } else{ // currPoke and oppPoke have the same speed.
+            if (ThreadLocalRandom.current().nextInt(0,2) == 0){
+                curAttackFirst(move);
+            }else {
+                oppAttackFirst(move);
+            }
+        }
+        return !someoneLost();
+    }
+    /**
+     * Handles the action of the opponent;
+     */
+    private void oppMove(){
+        Move move = null;
+        while (move == null) {
+            choice = ThreadLocalRandom.current().nextInt(Move.getMinChoice(),Move.getMaxChoice());
+            move = oppPoke.getMove(choice - 1);
+        }
+        useMove(move, oppPoke, currPoke);
+    }
 
     /**
      * Creates a string with the list of moves for the selected pokemon.
      * @return - a string with a list of moves for the selected pokemon.
      */
-    public String getMoves(){
+    private String getMoves(){
         String result = "";
         int cnt = 1;
         for(Move move: currPoke.getMoveSet()){
@@ -146,7 +189,7 @@ public class Arena {
      * Forms a string with the beginning options to a battle.
      * @return - a string with options.
      */
-    public String getOptions(){
+    private String getOptions(){
         return "1)Attack   2)Switch\n3)Bag      4)Run";
     }
 

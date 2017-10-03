@@ -119,6 +119,10 @@ public abstract class Pokemon {
         return pokeStats.getStats();
     }
 
+    public int getSpeed(){
+        return pokeStats.getSpeed();
+    }
+
     public int getAttack() {
         return pokeStats.getAttack();
     }
@@ -137,5 +141,14 @@ public abstract class Pokemon {
      */
     public String getHealth(){
         return "Current Health/Max Health: " + getCurrentHealth() + "/" + getMaxHealth();
+    }
+
+    /**
+     * Calculates the ratio of this pokemon and the challenger pokemon
+     * @param challenger - the poke to which speed is compared.
+     * @return - the ratio of the speed of this pokemon and of the challenger.
+     */
+    public float speedRatio(Pokemon challenger) {
+        return (float) getSpeed()/challenger.getSpeed();
     }
 }

@@ -175,4 +175,5 @@ public class PokeStats {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+
 }
