@@ -5,6 +5,6 @@ package PokeS.Moves;
  */
 public class Ember extends Move {
     public Ember() {
-        super("Ember", 40);
+        super("Ember", 40, Type.FIRE, ContactType.SPECIAL);
     }
 }

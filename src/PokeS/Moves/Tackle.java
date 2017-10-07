@@ -5,6 +5,6 @@ package PokeS.Moves;
  */
 public class Tackle extends Move {
     public Tackle(){
-        super("Tackle", 40);
+        super("Tackle", 40, Type.NORMAL, ContactType.PHYSICAL);
     }
 }

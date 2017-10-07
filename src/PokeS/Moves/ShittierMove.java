@@ -5,6 +5,6 @@ package PokeS.Moves;
  */
 public class ShittierMove extends Move {
     public ShittierMove(){
-        super("Shitter Move", 5);
+        super("Shitter Move", 5, Type.NORMAL, ContactType.PHYSICAL);
     }
 }

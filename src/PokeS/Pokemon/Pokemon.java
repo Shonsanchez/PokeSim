@@ -62,6 +62,11 @@ public abstract class Pokemon {
         return pokeStats.getCurHp();
     }
 
+
+    public int restoreHealth(int health) {
+        return pokeStats.restoreHealth(health);
+    }
+
     /**
      * Calculates the current health of the pokemon. if less <= 0 returns true
      * @return true if currentHealth <=0

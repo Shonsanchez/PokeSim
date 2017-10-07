@@ -18,10 +18,8 @@ public class Arena {
     private Trainer opponent;
     private Pokemon currPoke; //Current Pokemon - the Proponent's Pokemon
     private Pokemon oppPoke;
-    Scanner scanner = new Scanner(System.in);
-    int choice;
-
-
+    private Scanner scanner = new Scanner(System.in);
+    private int choice;
 
     /**
      * Constructor that takes in two trainers.
@@ -46,39 +44,75 @@ public class Arena {
         return selectOption(choice);
     }
 
+
     private boolean displayMoves() {
         Move move;
         System.out.printf(getMoves());
         choice = scanner.nextInt();
         if ((move = currPoke.getMove(choice-1))!=null)
             return doBattle(move);
-        return true;
+        return true; //Both trainers are able to battle
     }
 
     private boolean displaySwitch() {
         if (proponent.getNonFaintedPoke().size() > 1){
-            System.out.println(proponent.getNonFaintedPoke().size());
-            for (Pokemon poke: proponent.getNonFaintedPoke()){
-                System.out.println(poke.getName());
-            }
+            doSwitch();
         }else
             System.out.println("You don't have any other pokemon that can fight.\n");
-
         return true;
     }
 
+    //if switch occurs do dmg to pokemon.
+    //Work on this some more later on
+    private void doSwitch(){
+        System.out.println(getNonFaintedPokemon());
+        choice = scanner.nextInt();
+        Pokemon prevPoke = currPoke;
+        currPoke = proponent.getNonFaintedPoke().get(choice-1);
+        System.out.println(prevPoke.getName() + " has been switched out for " + currPoke.getName());
+    }
+
+    /**
+     * Forms a list of nonFainted pokemon
+     * @return - a string of nonFainted pokemon
+     */
+    private String getNonFaintedPokemon() {
+        String result = "";
+        int counter = 1;
+        for (Pokemon poke: proponent.getNonFaintedPoke()){
+            result+= counter++ + ") " + poke.getName() + "\n";
+        }
+        return result;
+    }
+
+    /**
+     * Checks if the bag is empty. If not displays the items within the bag
+     * @return - if both trainers are able to battle
+     */
     private boolean displayBag() {
-        if (!proponent.getItemsHeld().isEmpty()){
-            for (Item item: proponent.getItemsHeld()){
-                int counter = 1;
-                System.out.println(counter + ")" + item.getItemName());
-                choice = scanner.nextInt(); //need error checking.
-            }
+        if (!proponent.isBagEmpty()){
+            System.out.println(getBagItems());
         }else {
             System.out.println("Bag is empty.");
         }
         System.out.println("");
         return true;
+    }
+
+
+    /**
+     * Displays the items within the proponent's bag. Proponent selects the
+     * index of the item he wants to use.
+     * @return - a string of the effects of the items used.
+     */
+    private String getBagItems() {
+        System.out.println("Items in bag");
+        for (Item item: proponent.getItemsHeld()){
+            int counter = 1;
+            System.out.println(counter + ")" + item.getItemName());
+        }
+        choice = scanner.nextInt(); //need error checking.
+        return (proponent.useItem(choice - 1, currPoke));
     }
 
     private boolean displayRun() {
@@ -95,14 +129,19 @@ public class Arena {
         }
     }
 
+    /**
+     * Performs action depending on the option chosen
+     * @param option - the option number
+     * @return - if both trainers are able to continue battle
+     */
     private boolean selectOption(int option){
         switch (option){
             case 1:
                 return displayMoves();
             case 2:
-                return displaySwitch();
+                return displaySwitch(); //Needs Work
             case 3:
-                return displayBag();
+                return displayBag();//Needs work
             case 4:
                 return displayRun();
             default:
@@ -153,6 +192,11 @@ public class Arena {
         oppMove();
     }
 
+    /**
+     * Makes two pokemon battle, checks for speed to determine who makes the first move.
+     * @param move - the move to be used by the current pokemon
+     * @return - if both trainers are still able to continue battle
+     */
     private boolean doBattle(Move move) {
         float speedRatio = currPoke.speedRatio(oppPoke);
         if (speedRatio > 1){ // the currPoke is faster than oppPoke

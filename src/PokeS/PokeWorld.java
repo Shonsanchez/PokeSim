@@ -1,6 +1,6 @@
 package PokeS;
 
-import PokeS.Items.Potion;
+import PokeS.Items.BasicPotion;
 import PokeS.Pokemon.*;
 
 import java.util.ArrayList;
@@ -49,13 +49,14 @@ public class PokeWorld {
                 break;
         }
         createMainChar(name, gen, starter);
-        mainChar.addItem(new Potion());
+        mainChar.addItem(new BasicPotion());
         System.out.println("Your name is " + mainChar.getName() + " and you are a " + mainChar.getGender()
                 + "\nYou have picked " + starter.getName() + " as your starter pokemon.");
         Trainer gary = createGary();
         System.out.println("You will be challenging your first opponent: " + gary.getName() + "\n");
         System.out.println("He has a " + gary.getStarterPokemon().getName() + " with the following stats\n" + gary.getStarterPokemon().getStats() + "\n");
         System.out.println("Your pokemon has the following stats: \n" + mainChar.getStarterPokemon().getStats() + "\n");
+        mainChar.addPokemon(new Pikachu("Pikachu", StartPokemon.getTankStarterStats(),StartPokemon.getStarterMoves()));
         battle(gary);
     }
 

@@ -5,6 +5,6 @@ package PokeS.Moves;
  */
 public class WaterGun extends Move {
     protected WaterGun() {
-        super("Water Gun", 40);
+        super("Water Gun", 40, Type.WATER, ContactType.SPECIAL);
     }
 }

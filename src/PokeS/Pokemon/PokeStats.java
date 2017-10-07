@@ -37,13 +37,16 @@ public class PokeStats {
     }
 
     /**
-     * Add health to the curHP
+     * *Add health to the curHP
      * @param health - the amount of health to be restored.
+     * @return - the amount of health restored.
      */
-    public void restoreHealth(int health){
+    public int restoreHealth(int health){
+        int prevHp = curHp;
         curHp += health;
         if (curHp > healthPoint)
             curHp = healthPoint;
+        return curHp - prevHp;
     }
 
     /**

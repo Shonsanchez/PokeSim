@@ -1,6 +1,5 @@
 package PokeS.Moves;
 
-import PokeS.Items.Potion;
 import PokeS.Pokemon.Pokemon;
 
 /**
@@ -9,13 +8,16 @@ import PokeS.Pokemon.Pokemon;
 public abstract class Move {
     private String moveName;
     private int baseDmg;
-    private int type;
+    private Type type;
+    private ContactType contactType;
     private static int minChoice = 1;
     private static int maxChoice = 4;
 
-    protected Move(String moveName, int baseDmg){
+    protected Move(String moveName, int baseDmg, Type type, ContactType contactType){
         this.moveName = moveName;
         this.baseDmg = baseDmg;
+        this.type = type;
+        this.contactType = contactType;
     }
 
     public int calculateDmg(Pokemon attaker, Pokemon Defender) {

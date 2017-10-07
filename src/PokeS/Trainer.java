@@ -12,7 +12,7 @@ public class Trainer {
     private String name;
     private ArrayList<Pokemon> pokeHeld = new ArrayList<>();
     private ArrayList<Pokemon> pokeOwned = new ArrayList<>();
-    private ArrayList<Item> itemsHeld = new ArrayList<>();
+    private Bag bag = new Bag();
     private Pokemon starterPokemon;
     private Gender gender;
 
@@ -31,20 +31,21 @@ public class Trainer {
 
 
     public ArrayList<Item> getItemsHeld() {
-        return itemsHeld;
+        return bag.getItems();
+    }
+
+
+    public String itemList() {
+        return bag.itemList();
     }
 
     /**
      * Checks if the item is in the itemsHeld ArrayList, adds the of the item to the item within the
      * ArrayList if the does exist, else adds the item into the array.
-     * @param item - the item to add.
+     * @param items - the item to add.
      */
-    public void addItem(Item item){
-        if (itemsHeld.contains(item)) {
-            itemsHeld.get(itemsHeld.indexOf(item)).addUses(item.getUses());
-        } else {
-            itemsHeld.add(item);
-        }
+    public void addItem(Item... items){
+        bag.addItem(items);
     }
 
     /**
@@ -93,6 +94,14 @@ public class Trainer {
                 return true;
         }
         return false;
+    }
+
+    public boolean isBagEmpty() {
+        return bag.isEmpty();
+    }
+
+    public String useItem(int itemIndex, Pokemon pokemon) {
+        return bag.useItem(itemIndex,pokemon);
     }
 
     /**
