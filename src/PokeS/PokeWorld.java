@@ -19,13 +19,14 @@ public class PokeWorld {
 
     private PokeWorld() {
         Pokemon starter;
-        String name;
+        String name = "";
         Gender gen;
         int choice;
 
         System.out.println("Hello, User, and Welcome to PokeSim! The Pokemon Simulator you'll learn to enjoy!");
         System.out.println("What is your name?");
-        name = scanner.next();
+        name = scanner.nextLine();
+
 
         System.out.println("It's a pleasure to meet you, " + name);
         System.out.printf("Select a gender: 1) Male 2)Female (Default male)");

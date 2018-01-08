@@ -262,6 +262,4 @@ public class Arena {
         while(displayOptions());
         return proponent.hasNonFaintedPoke();
     }
-
-
 }
